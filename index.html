@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        img{
+            width: 500px;
+            height: 500px;
+            margin-right: 20%;
+         border-radius: 5px;
+         margin-left: 70vh;
+        }
+        #rop{
+            margin-left: 1vh;
+        }
+        #rrr{
+            margin-left: 1vh;
+        }
+        #ddd{
+            margin-left: 1vh;
+        }
+        #ggg{
+            margin-left: 1vh;
+        }
+        body{
+            background-color: #000;
+              font-family: sans-serif;
+            
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 10px;
+            
+    
+        }
+        
+        
+        .btn{
+            padding: 15px 40px;
+            position: relative;
+            z-index: 0;
+            border: none;
+            border-radius: 12px;
+            color: blue;
+            cursor: pointer;
+            outline: none;
+           
+        }
+        .btn::after{
+            content: "";
+            position: relative;
+            z-index: -1;
+             width: 100%;
+            height: 100%;
+            background: #333;
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+            
+        }
+        .btn::before{
+            content: "";
+            position: absolute;
+            background: linear-gradient(
+                45deg, #ff0000, #fffb00, #48ff00, #00ffd5, #002dff
+            );
+            top: -2px;
+            left: -2px;
+            background-size: 600%;
+            z-index: -1;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            filter: blur(8px);
+            transition: opacity ,3s ease-in-out;
+            border-radius: 10px;
+            opacity: 1;
+            animation:glowing 20s linear infinite;
+        }
+        @keyframes glowing{
+            0%{
+                background-position: 0 0;
+            }
+            50%{
+                background-position: 400% 0;
+
+            }
+            100%{
+                background-position: 0 0;
+            }
+        }
+        .btn:hover::before{
+            opacity: 1;
+        }
+        .btn:active::after{
+            background: transparent;
+
+        }
+        .btn:active{
+            color: #000;
+            font-weight: bold;
+        }
+        nav{
+            background-color: gold;
+            color: #000;
+            justify-content: space-between;
+            align-items: center;
+            display: flex;
+            width: 100%;
+
+            height: 70px;
+        }
+        
+             .fade{
+            animation: fade 4s ease-in-out infinite;
+            color: greenyellow;
+
+
+        }
+        @keyframes fade{
+            0%, 100%{
+                opacity: 0;
+
+            }
+            50%{
+                opacity: 1;
+            }
+        }
+
+    
+
+    .sidebar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 250px;
+      height: 100vh;
+      background: #111827;
+      color: white;
+      padding: 35px 20px;
+      z-index: 1000;
+    }
+
+    .profile {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .profile img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #38bdf8;
+      margin-bottom: 15px;
+    }
+
+    .profile h2 {
+      font-size: 22px;
+    }
+
+    .profile p {
+      color: #9ca3af;
+      margin-top: 5px;
+    }
+
+    .nav a {
+      display: block;
+      color: #d1d5db;
+      text-decoration: none;
+      padding: 13px 15px;
+      margin: 7px 0;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+
+    .nav a:hover {
+      background: #2563eb;
+      color: white;
+    }
+
+    .main {
+      margin-left: 250px;
+      padding: 60px;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 40px 0;
+    }
+
+    .hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero h1 {
+      font-size: 55px;
+      color: #111827;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 span {
+      color: #2563eb;
+    }
+
+    .hero h3 {
+      font-size: 25px;
+      color: #4b5563;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      max-width: 650px;
+      line-height: 1.8;
+      color: #6b7280;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #2563eb;
+      color: white;
+      padding: 13px 25px;
+      border-radius: 7px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .section-title {
+      font-size: 35px;
+      margin-bottom: 35px;
+      color: #111827;
+    }
+
+    .section-title span {
+      color: #2563eb;
+    }
+
+    .about p {
+      max-width: 800px;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    .skills {
+      display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+     
+      gap: 20px;
+      
+    
+    }
+    .skills button{
+      width: 300px;
+      height: 100px;
+      
+      display: inline-block;
+      background: white;
+      color: black;
+      padding: 13px 25px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+        content: "";
+
+        
+        border-radius: 9%;
+          height: 70px;
+          cursor: pointer;
+            outline: none;
+            position: relative;
+            z-index: 0;
+
+    }
+    .skills button:hover{
+       content: "";
+            position: relative;
+            background: linear-gradient(
+                45deg, #ff0000, #fffb00, #48ff00, #ff0000, #002dff
+            );
+            ;
+            background-size: 600%;
+            z-index: -1;
+            
+            filter: blur(2px);
+            transition: opacity ,3s ease-in-out;
+      
+            opacity: 2;
+            animation:glowing 20s linear infinite;
+        }
+        @keyframes glowing{
+            0%{
+                background-position: 0 0;
+            }
+            50%{
+                background-position: 400% 0;
+
+            }
+            100%{
+                background-position: 0 0;
+            }
+        }
+      
+    
+
+
+    .skill {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+      text-align: center;
+      font-weight: bold;
+      transition: 0.3s;
+      border-radius: 30%;
+    }
+
+    .skill:hover {
+      transform: translateY(-5px);
+    }
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .project {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .project:hover {
+      transform: translateY(-7px);
+    }
+
+    .project img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 20px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .contact-box {
+      background: white;
+      max-width: 650px;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
+    }
+
+    .contact-box p {
+      margin: 15px 0;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+      }
+
+      .profile {
+        margin-bottom: 15px;
+      }
+
+      .nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .nav a {
+        margin: 3px;
+        padding: 8px 12px;
+      }
+
+      .main {
+        margin-left: 0;
+        padding: 30px 20px;
+      }
+
+      section {
+        min-height: auto;
+        padding: 60px 0;
+      }
+
+      .hero {
+        min-height: 80vh;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+    }
+    .fade{
+        justify-content: center;
+        align-items: center;
+        margin-left: 300px;
+        margin-top: 100px;
+
+    }
+     .animatedtext{
+            font-size: 34px;
+            font-weight: 600;
+            min-width: 280px;
+            margin-left: 300px;
+            margin-top: 30px;
+
+
+        }
+        .animatedtext span{
+            position: relative;
+
+        }
+        .animatedtext span::before{
+            content: "Developer";
+            color: #ff7f50;
+            animation: words 30s infinite;
+
+        }
+        .animatedtext span::after{
+            content: "";
+            position: absolute;
+            width: calc(100% + 8px);
+            height: 100%;
+            background-color: black;
+            border-left: 2px solid #ff7f50;
+            right: -8px;
+            animation: cursor .4s infinite, typing 30s steps(100) infinite ;
+        }
+        @keyframes cursor{
+         to{
+            border-left: 2px solid #ff7f5000;
+
+         }  
+
+        }
+          @keyframes words{
+            0%, 20%{
+                content: "This web is the best for things like, ";
+            }
+            21%, 40%{
+               content:"programming ";
+
+            }
+            41%, 60%{
+                 content:"web designing";
+            }
+            61%, 80%{
+                content: "graphics designing and more thing related ";
+
+            }
+            81%, 100%{
+                content: "so don't miss out .";
+            }
+          }
+          @keyframes typing{
+            10%, 15%, 30%, 35%, 50%, 55%, 70%, 75%, 90%, 95%{
+                width: 0;
+
+            }
+            5%,20%,25%,40%,45%,60%,65%,80%,85%{
+                width: calc(100% + 8px);
+            }
+          }.piechart{
+    width: 150px;
+    height: 150px;
+    border: 1px solid black;
+    border-radius: 50%;
+    margin: auto;
+    background: conic-gradient(blue 0deg 35deg, green 45deg 90deg, pink 95deg 110deg, red 120deg 145deg, purple 160deg 180deg,  brown 200deg 220deg, yellow 240deg 260deg, orange 300deg 360deg);
+}
+
+data{
+    padding-top: 9vh;
+    margin-left: 55px;
+    display: flex;
+    color: black;
+   
+}
+    
+    </style>
+</head>
+<body>
+    <nav>
+        
+       <ul><a href="#" target="_blank">About me</a> 
+    <a href="#contact" target="_blank">contact</a> 
+        <a href="#About" target="_blank">help</a></ul> 
+    </nav>
+    <div class="container">
+        <button class="btn">HI I AM MR GIFT</button>
+    <img src="c:\Users\USER\Pictures\file_00000000caa481f6bd064138cb54b3f7.png" alt="">
+          <h1 class="fade">My name is francis gift <br> I am a programmer ,I do things like programming, Web designing, graphics designingand meny more </h1>
+
+   </div>
+    <aside class="sidebar">
+
+    <div class="profile">
+      <img src="lv_0_20251130172025 (1).jpg" alt="MR GIFT Profile Picture" id="rop">
+      <h2>francis gift</h2>
+      <p>Web Developer</p>
+    </div>
+
+    <nav class="nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      
+    </nav>
+    
+    <div class="piechart" >
+        <data><h1>life</h1></data>
+            </div>
+
+  </aside>
+<div class="animatedtext"> <span></span></div>
+  <main class="main">
+
+    <section id="home" class="hero">
+      <h1>Hello, I'm <span>francis gift</span></h1>
+      <h3>Web Developer & Designer</h3>
+
+      <p>
+        I create modern, responsive and user-friendly websites.
+        I enjoy turning ideas into beautiful digital experiences
+        using HTML and CSS.
+      </p>
+
+      <div>
+        <a href="#projects" class="btn">View My Work</a>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="section-title">About <span>Me</span></h2>
+
+      <p>
+        I'm a passionate developer who enjoys building websites
+        that are fast, responsive and easy to use. I am constantly
+        learning new techniques and improving my web development
+        skills using HTML and CSS.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2 class="section-title">My <span>Skills</span></h2>
+
+      <div class="skills">
+        <button class="Skills"> <a href="animation1.html" class="button" target="_blank" ><h1>HTML</h1></a></button>
+         <button class="Skills"><a href="bataa.html" class="button" target="_blank" ><h1>CSS</h1></a></button>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="section-title">My <span>Projects</span></h2>
+
+      <div class="projects">
+
+        <div class="project">
+          <img src="IMG-20251225-WA0031.jpg" alt="Portfolio Website" id="rrr">
+
+          <div class="project-content">
+            <h3>Portfolio Website</h3>
+
+            <p>
+              A responsive personal portfolio website built with
+              HTML and CSS.
+            </p>
+
+            <a href="food.html" class="btn" target="_blank">View Project</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="IMG-20251225-WA0028.jpg" alt="Landing Page" id="ddd">
+
+          <div class="project-content">
+            <h3>Landing Page</h3>
+
+            <p>
+              A modern landing page designed for a fictional
+              business using HTML and CSS.
+            </p>
+
+            <a href="nav7.html" class="btn" target="_blank">View Project</a>
+          </div>
+        </div>
+
+        <div class="project">
+          <img src="IMG-20251201-WA0003.jpg" alt="Web Design" id="ggg">
+
+          <div class="project-content">
+            <h3>Web Design</h3>
+
+            <p>
+              A simple responsive website created using
+              HTML and CSS.
+            </p>
+
+            <a href="#" class="btn">View Project</a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Contact <span>Me</span></h2>
+
+      <div class="contact-box">
+
+        <p>
+          <strong>Email:</strong>
+        fgift5917@gmail.com
+        </p>
+
+        <p>
+          <strong>Phone:</strong>
+          09131636802
+        </p>
+
+        <p>
+          <strong>Location:</strong>
+          imo, Nigeria
+        </p>
+
+        <a
+          href="mailto: fgift5917@gmail.com"
+          class="btn"
+        >
+          Send Me an Email
+        </a>
+
+      </div>
+    </section>
+</body>
+</html>
